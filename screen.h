@@ -13,7 +13,7 @@ private:
   char brush;
 
   // armazena a matriz da tela
-  vector<vector<char>> mat;
+  vector< vector<char> > mat;
 public:
   // construtor da classe
   Screen(int _nlin, int _ncol);
@@ -22,11 +22,12 @@ public:
   // guardado em 'brush'
   void setPixel(int _x, int _y);
 
+  void debug();
   // limpa a tela
   void clear();
 
   // muda o caractere de desenho
-  void setBrush(char _brush = '*');
+  void setBrush(char _brush = '.');
 
   // envia a tela para um stream de saida
   friend ostream& operator<<(ostream &os, Screen &t);

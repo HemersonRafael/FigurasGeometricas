@@ -29,18 +29,31 @@ void Screen::clear(){
              mat[i][j] = ' ';
         }
     }
+   //  std::cout << "size: " << t.mat.size()  << "\n";
+}
+
+void Screen::debug(){
+    for(int i=0; i< mat.size(); i++){
+        for(int j=0; j< mat[i].size(); j++){
+            std::cout << "i: " << i << " j: "<< j << "char: "<< mat[i][j];
+        }
+        std::cout << std::endl;
+    }
 }
 
 void Screen::setBrush(char _brush){
     brush = _brush;
 }
 
+
 ostream &operator<<(ostream &os, Screen &t){
     for(int i=0; i<t.mat.size(); i++){
         for(int j=0; j<t.mat[i].size(); j++){
             os << t.mat[i][j];
         }
-        os << "\n";
+        os  << "\n";
     }
     return (os);
 }
+
+
