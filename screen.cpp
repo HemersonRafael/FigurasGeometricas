@@ -12,6 +12,7 @@ Screen::Screen(int _nlin, int _ncol){
     for(int i=0; i<mat.size(); ++i){
         mat[i].resize(_ncol);
     }
+    Screen::clear();
 }
 
 void Screen::setPixel(int _x, int _y){
@@ -19,7 +20,11 @@ void Screen::setPixel(int _x, int _y){
 }
 
 void Screen::clear(){
-
+    for(int i=0; i<mat.size(); i++){
+        for(int j=0;j<mat[i].size(); j++){
+             mat[i][j] = ' ';
+        }
+    }
 }
 
 void Screen::setBrush(char _brush){
@@ -27,5 +32,12 @@ void Screen::setBrush(char _brush){
 }
 
 ostream &operator<<(ostream &os, Screen &t){
-
+    for(int i=0; i<mat.size; i++){
+        os << " | ";
+        for(int j=0; j<m.nc; j++){
+            os << m.x[i][j] << " | ";
+        }
+        os << "\n";
+    }
+    return (os);
 }
