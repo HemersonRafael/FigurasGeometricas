@@ -6,14 +6,14 @@
 using namespace std;
 
 int main(){
-    Screen tela(20,20);
+    Screen tela(35,50);
     Reta a(0,0,0,10);
-    Circulo c (10,10,5);
+    Circulo c (15,15,15);
 
 
     Retangulo b(20,20);
 
-    tela.setBrush('*');
+    tela.setBrush('?');
 
    //
    // a.draw(tela);
