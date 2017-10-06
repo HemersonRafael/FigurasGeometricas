@@ -8,7 +8,7 @@ using namespace std;
 int main(){
     Screen tela(20,20);
     Reta a(0,0,0,10);
-    Circulo c (5,5,5);
+    Circulo c (10,10,5);
 
 
     Retangulo b(20,20);
