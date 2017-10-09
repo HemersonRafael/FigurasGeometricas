@@ -12,7 +12,7 @@ Reta::Reta(int _x1, int _y1, int _x2, int _y2){
 }
 
 void Reta::draw(Screen &t){
-    int tamanho, delta_x, delta_y, x, y, i;
+    float tamanho, delta_x, delta_y, x, y, i;
 
     // Tamanho: Aproxima o tamanho da reta
      if( abs(x2 - x1) > abs(y2 - y1))

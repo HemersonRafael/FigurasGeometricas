@@ -32,11 +32,9 @@ void Extras::logCsv(std::string data, std::string filename, std::string header) 
 
 }
 
-void Extras::loadFigures(std::string fileName){
+void Extras::loadFigures(std::string fileName, int sizeScreen[], std::vector<FiguraGeometrica *> &data, std::vector<char> &brush){
 
-    std::vector<FiguraGeometrica> data;
-    FiguraGeometrica* dataTemp;
-    int sizeScreen [2];
+
     int figura;
     int vetorDeCaracteristicas[4];
 
@@ -71,26 +69,27 @@ void Extras::loadFigures(std::string fileName){
             }
             else if (contCell < 5)
                 vetorDeCaracteristicas[contCell -1] = std::stoi(cell);
+            else
+                brush.push_back(vetorDeCaracteristicas[contCell -1]);
 
         }
 
         switch (figura) {
         case 1:
-            dataTemp = new Reta(vetorDeCaracteristicas[0],vetorDeCaracteristicas[1],
-                    vetorDeCaracteristicas[2],vetorDeCaracteristicas[3]);
+            data.push_back( new Reta(vetorDeCaracteristicas[0],vetorDeCaracteristicas[1],
+                    vetorDeCaracteristicas[2],vetorDeCaracteristicas[3]) );
             break;
 
         case 2:
-            dataTemp = new Retangulo(vetorDeCaracteristicas[0],vetorDeCaracteristicas[1],
-                    vetorDeCaracteristicas[2],vetorDeCaracteristicas[3]);
+            data.push_back( new Retangulo(vetorDeCaracteristicas[0],vetorDeCaracteristicas[1],
+                    vetorDeCaracteristicas[2],vetorDeCaracteristicas[3]) );
             break;
 
         case 3:
-            dataTemp = new Circulo(vetorDeCaracteristicas[0],vetorDeCaracteristicas[1],
-                    vetorDeCaracteristicas[2], vetorDeCaracteristicas[3]);
+            data.push_back( new Circulo(vetorDeCaracteristicas[0],vetorDeCaracteristicas[1],
+                    vetorDeCaracteristicas[2], vetorDeCaracteristicas[3]) );
 
-        }
-
+     }
 
 
     }
