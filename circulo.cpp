@@ -1,5 +1,6 @@
 #include "circulo.h"
 #include <cmath>
+#include <iostream>
 
 #define sin 0.707106781
 
@@ -82,5 +83,8 @@ void Circulo::translade(int _x, int _y, Screen &t ){
 
 }
 
+void Circulo::debug(){
+    std::cout << "x: " << x << " y: " << y << " r: "<< r << std::endl;
+}
 
 

@@ -1,9 +1,11 @@
 #include <iostream>
+#include <unistd.h>
 #include "screen.h"
 #include "reta.h"
 #include "retangulo.h"
 #include "circulo.h"
 #include "extras.h"
+
 
 using namespace std;
 
@@ -16,22 +18,28 @@ int main(){
 
     std::vector <FiguraGeometrica*> data;
     std::vector <char> brush;
-    int sizeScreen[2];
+    int sizeScreen[2] = {20,20};
+    int microseconds = 1000000;
 
     string fileName = "figuras.csv";
     int sizeFile = 1000;
 
-   // extras.randFigures(fileName.c_str(),sizeFile);
+   extras.randFigures(fileName.c_str(),sizeFile);
 
     extras.loadFigures("figuras.csv",sizeScreen,data,brush);
 
 
     Screen tela(sizeScreen[0],sizeScreen[1]);
 
-    for (int i =0; i < data.size(); i++){
+    for (unsigned int i =0; i < data.size(); i++){
+            tela.setBrush(brush[i]);
             data[i]->draw(tela);
+            cout << "Figura " << i+1 << endl;
             cout << tela;
             tela.clear();
+            cout << endl;
+            usleep(microseconds);
+
     }
 
 
@@ -40,19 +48,12 @@ int main(){
 
 
 
-
-
-
-
-
-/*
-
     tela.setBrush('*');
 
     a.draw(tela);
     cout << tela;
     tela.clear();
-
+/*
     b.draw(tela);
     cout << tela;
     tela.clear();

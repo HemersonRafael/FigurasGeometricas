@@ -47,3 +47,9 @@ void Retangulo::draw(Screen &t){
 
 }
 
+void Retangulo::debug(){
+    std::cout << "x: "<< x << " y: " << y<< std::endl;
+    std::cout << "largura: " << largura << "altura: " << altura <<std::endl;;
+
+}
+

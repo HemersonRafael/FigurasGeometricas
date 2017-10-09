@@ -11,6 +11,7 @@ public:
     Reta(int _x1, int _y1 , int _x2, int _y2);
 
     void draw(Screen &t);
+    void debug();
 };
 
 #endif // RETA_H

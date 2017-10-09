@@ -34,3 +34,10 @@ void Reta::draw(Screen &t){
 
 
 }
+
+
+void Reta::debug(){
+    std::cout << "x1: "<< x1 << " y1: " << y1<< std::endl;
+    std::cout << "x2: " << x2 << "y2: " << y2 << std::endl;
+
+}

@@ -11,6 +11,7 @@ private:
 public:
     Circulo(int _x, int _y, int _r, int _fill);
     void draw(Screen &t);
+    void debug();
     void translade(int _x, int _y, Screen &t );
 };
 

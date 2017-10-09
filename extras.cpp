@@ -41,7 +41,7 @@ void Extras::loadFigures(std::string fileName, int sizeScreen[], std::vector<Fig
     std::string aux; // variavel auxiliar
     std::string cell; // represeta uma celula de uma linha pro exemplo a palavra "retangle" da linha: retangle,10,20,30,40,50
     std::ifstream file (fileName.c_str());
-
+    char brushTemp;
     if (!file.is_open() && !file.good()) {
         std::cout << "Erro to read: " << fileName << std::endl;
         return;
@@ -69,8 +69,10 @@ void Extras::loadFigures(std::string fileName, int sizeScreen[], std::vector<Fig
             }
             else if (contCell < 5)
                 vetorDeCaracteristicas[contCell -1] = std::stoi(cell);
-            else
-                brush.push_back(vetorDeCaracteristicas[contCell -1]);
+            else{
+                brushTemp =  std::stoi(cell) ;
+                brush.push_back(brushTemp);
+            }
 
         }
 
@@ -105,7 +107,7 @@ void Extras::loadFigures(std::string fileName, int sizeScreen[], std::vector<Fig
 
 void Extras::randFigures(std::string fileName, int size){
     std::string data;
-    std::string header = "20,60";
+    std::string header = "20,80";
     int figura;
     int caracteristicasAleatorias[4];
     unsigned int brushAleatorio;
@@ -132,7 +134,13 @@ void Extras::randFigures(std::string fileName, int size){
 
         // gera pontos, largura e altura,  aleatórios
         for(int i =0; i<4; i++){
-            caracteristicasAleatorias[i] = rand() % 20 +1;
+            if(i<2)
+                caracteristicasAleatorias[i] = rand() % 20;
+            else
+                 caracteristicasAleatorias[i] = rand() % 10 +1;
+
+
+
             if(i==3 and figura == 3){
 
                 if(caracteristicasAleatorias[3] >= 20)
@@ -146,7 +154,7 @@ void Extras::randFigures(std::string fileName, int size){
                 data+= "," + std::to_string(caracteristicasAleatorias[i]) ;
         }
 
-        brushAleatorio = rand() % 100 + 33;
+        brushAleatorio = 'A' + (random() % 26);
 
         data+= "," + std::to_string(brushAleatorio) ;
 
