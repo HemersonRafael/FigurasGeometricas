@@ -42,34 +42,19 @@ void Circulo::draw(Screen &t){
         t.setPixel(round(_x+ x), round(_y + y));
 
         if(fill){
-            for(int i = round(_x + x); i >= x; i-- )
-                for(int j= round(_y + y); j  >=y ; j-- ){
-                     t.setPixel(i, j);
-                     translade(i,j,t);
-                }
+            for(int i=round(x-r); i<round(x+r); i++){
+                for(int j=round(y-r); j<round(y+r); j++){
+                    if( (pow(round(i-x),2) + pow(round(j -y),2)) <= pow(r,2)){
+                        t.setPixel(i,j);
+                    }
+                 }
+             }
 
 
         }
 
 
         translade(_x,_y,t);
-/*
-        float xinicial = _x*sin - _y*sin;
-        float yinicial = _x*sin + _y*sin;
-        for(int i =0 ; i< 7; i++){
-
-            t.setPixel(round(xinicial+ x), round(yinicial + y));
-            float tempX = xinicial;
-            float tempY = yinicial;
-
-            xinicial = tempX*sin - tempY*sin;
-            yinicial = tempX*sin + tempY*sin;
-
-
-
-            }
-
-*/
 
         }
 
