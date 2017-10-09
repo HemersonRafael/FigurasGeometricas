@@ -1,12 +1,15 @@
 #ifndef RETANGULO_H
 #define RETANGULO_H
-#include "screen.h"
-class Retangulo  {
+#include "figurageometrica.h"
+
+class Retangulo : public FiguraGeometrica  {
 private:
+    int x;
+    int y;
     int altura;
     int largura;
 public:
-    Retangulo(int _altura, int _largura);
+    Retangulo(int x0, int y0, int _largura, int _altura);
     void draw(Screen &t);
 };
 

@@ -3,13 +3,15 @@
 
 #define sin 0.707106781
 
-Circulo::Circulo(int _x, int _y, int _r){
+Circulo::Circulo(int _x, int _y, int _r, int _fill){
     x = _x;
     y = _y;
     r = _r;
+    fill = _fill;
 
 }
 
+void translade(int x,int y,Screen &t );
 
 void Circulo::draw(Screen &t){
     float _x, _y , d;
@@ -18,8 +20,7 @@ void Circulo::draw(Screen &t){
     d = 1 - r;
 
 
-    t.setPixel(round(x), round(y));
-
+     t.setPixel(round(x), round(y));
      t.setPixel(round(x-r), round(y));
      t.setPixel(round(x+r), round(y));
      t.setPixel(round(x), round(y-r));
@@ -40,6 +41,19 @@ void Circulo::draw(Screen &t){
 
         t.setPixel(round(_x+ x), round(_y + y));
 
+        if(fill){
+            for(int i = round(_x + x); i >= x; i-- )
+                for(int j= round(_y + y); j  >=y ; j-- ){
+                     t.setPixel(i, j);
+                     translade(i,j,t);
+                }
+
+
+        }
+
+
+        translade(_x,_y,t);
+/*
         float xinicial = _x*sin - _y*sin;
         float yinicial = _x*sin + _y*sin;
         for(int i =0 ; i< 7; i++){
@@ -53,13 +67,35 @@ void Circulo::draw(Screen &t){
 
 
 
+            }
+
+*/
+
         }
 
 
     }
 
 
+void Circulo::translade(int _x, int _y, Screen &t ){
+
+    float xinicial = _x*sin - _y*sin;
+    float yinicial = _x*sin + _y*sin;
+    for(int i =0 ; i< 7; i++){
+
+
+        t.setPixel(round(xinicial+ x), round(yinicial + y));
+        float tempX = xinicial;
+        float tempY = yinicial;
+
+        xinicial = tempX*sin - tempY*sin;
+        yinicial = tempX*sin + tempY*sin;
+
+
+
+        }
 
 }
+
 
 

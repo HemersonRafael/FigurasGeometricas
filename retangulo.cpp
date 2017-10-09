@@ -2,7 +2,9 @@
 #include "reta.h"
 #include <iostream>
 #include <cmath>
-Retangulo::Retangulo(int _altura, int _largura){
+Retangulo::Retangulo(int _x0 , int _y0 , int _altura, int _largura){
+    x = _x0;
+    y = _y0;
     altura = _altura;
     largura = _largura;
 }
@@ -31,11 +33,11 @@ void calcreta(float x1, float y1, float x2, float y2, Screen &t){ // x Ã© y, y Ã
 
 }
 void Retangulo::draw(Screen &t){
+    calcreta(y, x+largura-1, y+altura , x+largura-1, t);
 
-    calcreta(0,0,0,largura,t);
-    calcreta(0,largura,altura,largura,t);
-    calcreta(altura,largura,altura,0,t);
-    calcreta(altura,0,0,0,t);
+    calcreta(y, x, y, x+largura-1, t);
+    calcreta(y, x, y+altura-1, x, t);
+    calcreta(y+altura-1, x, y+altura-1, x+largura-1, t);
 
 
 
