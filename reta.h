@@ -8,7 +8,9 @@ private:
     int x1,x2,y1,y2;
 
 public:
+    //!Inicializar a posição inicial e final de uma reta.
     Reta(int _x1, int _y1 , int _x2, int _y2);
+    //!Desenha a forma do objeto reta.
     void draw(Screen &t);
 };
 
