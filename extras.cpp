@@ -6,10 +6,6 @@
 #include <cstdlib>
 #include <ctime>
 
-Extras::Extras()
-{
-
-}
 void Extras::logCsv(std::string data, std::string filename, std::string header) {
     std::ofstream myfile;
 
