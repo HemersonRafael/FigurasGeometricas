@@ -1,7 +1,7 @@
 #include "retangulo.h"
 #include "reta.h"
-#include <iostream>
 #include <cmath>
+
 Retangulo::Retangulo(int _x0 , int _y0 , int _altura, int _largura){
     x = _x0;
     y = _y0;
@@ -9,47 +9,18 @@ Retangulo::Retangulo(int _x0 , int _y0 , int _altura, int _largura){
     largura = _largura;
 }
 
-void calcreta(float x1, float y1, float x2, float y2, Screen &t){ // x é y, y é x
-    float tamanho, delta_x, delta_y, x, y, i;
-
-    // Tamanho: Aproxima o tamanho da reta
-     if( abs(x2 - x1) > abs(y2 - y1))
-          tamanho = abs(x2 - x1);
-     else
-          tamanho = abs(y2 - y1);
-     //seleciona o maior dos valores entre Delta_x e Delta_y como unidade de rasterização
-     delta_x = (x2 - x1)/tamanho;
-     delta_y = (y2 - y1)/tamanho;
-     i = 0;
-     x = x1;
-     y = y1;
-     while(i < tamanho){
-       t.setPixel(round(x), round(y));
-       x += delta_x;
-       y += delta_y;
-       i = i + 1;
-     }
-     //t.debug();
-
-}
 void Retangulo::draw(Screen &t){
-    calcreta(y, x+largura-1, y+altura , x+largura-1, t);
 
-    calcreta(y, x, y, x+largura-1, t);
-    calcreta(y, x, y+altura-1, x, t);
-    calcreta(y+altura-1, x, y+altura-1, x+largura-1, t);
-
-
-
-//t.debug();
-
-
+    Reta r1(y, x+largura-1, y+altura , x+largura-1);
+    r1.draw(t);
+    Reta r2(y, x, y, x+largura-1);
+    r2.draw(t);
+    Reta r3(y, x, y+altura-1, x);
+    r3.draw(t);
+    Reta r4(y+altura-1, x, y+altura-1, x+largura-1);
+    r4.draw(t);
 
 }
 
-void Retangulo::debug(){
-    std::cout << "x: "<< x << " y: " << y<< std::endl;
-    std::cout << "largura: " << largura << "altura: " << altura <<std::endl;;
 
-}
 

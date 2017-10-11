@@ -22,7 +22,6 @@ public:
   // guardado em 'brush'
   void setPixel(int _x, int _y);
 
-  void debug();
   // limpa a tela
   void clear();
 
